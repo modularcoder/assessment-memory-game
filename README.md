@@ -1,5 +1,15 @@
 # SPREAD Memory
 
+## Solution
+
+- [📋 Solution description](https://github.com/modularcoder/assessment-memory-game/blob/main/SOLUTION.md)
+- [⚙️ Basic implementation source code](https://github.com/modularcoder/assessment-memory-game/tree/main/2-basic)
+- [🚀 Basic implementation preview](https://modularcoder-assessment-memory-game-basic.vercel.app/)
+
+-----
+
+## Assignment
+
 ### Background
 This is a demo memory game product for a customer project, which was created by a colleague that has left the company.
 The product comes without a backend and works with a custom api-client that mocks the requests. Unfortunately, he
