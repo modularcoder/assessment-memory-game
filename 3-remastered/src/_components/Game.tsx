@@ -3,8 +3,8 @@ import React, {
   useState,
 } from 'react';
 
-import { useGameCardsData } from '../_hooks/useGameCardsData';
-import { useGameCards } from '../_hooks/useGameCards';
+import { useGameCardsData } from '../Game/_hooks/useGameCardsData';
+import { useGameCards } from '../Game/_hooks/useGameCards';
 
 import Board from './Board';
 import Card from './Card';
