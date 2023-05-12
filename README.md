@@ -2,10 +2,18 @@
 
 ## Solution
 
-- [📋 Solution description](https://github.com/modularcoder/assessment-memory-game/blob/main/SOLUTION.md)
-- [⚙️ Basic implementation source code](https://github.com/modularcoder/assessment-memory-game/tree/main/2-basic)
-- [🚀 Basic implementation preview](https://modularcoder-assessment-memory-game-basic.vercel.app/)
+- [📋  Solution description](https://github.com/modularcoder/assessment-memory-game/blob/main/SOLUTION.md)
 
+--
+
+- [⚙️  Basic implementation source code](https://github.com/modularcoder/assessment-memory-game/tree/main/2-basic)
+- [🚀  Basic implementation preview](https://modularcoder-assessment-memory-game-basic.vercel.app/)
+
+--
+
+- [⚙️  Remastered implementation source code](https://github.com/modularcoder/assessment-memory-game/tree/main/3-remastered)
+- [🚀  Remastered implementation preview](https://modularcoder-assessment-memory-game-remastered.vercel.app/)
+- [👨🏻‍🎨  Remastered implementation Storybook](https://modularcoder-assessment-memory-game-remastered-storybook.vercel.app/)
 -----
 
 ## Assignment
