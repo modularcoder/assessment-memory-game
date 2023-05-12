@@ -1,13 +1,21 @@
 import React from 'react'
-import Layout from './_components/Layout'
-import GameController from './Game/GameController'
+import styled from 'styled-components'
+import GameContainer from './Game/GameContainer'
 
 function App() {
   return (
-    <Layout>
-      <GameController />
-    </Layout>
+    <AppLayout>
+      <GameContainer />
+    </AppLayout>
   )
 }
+
+const AppLayout = styled.div`
+  padding: 20px 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 export default App

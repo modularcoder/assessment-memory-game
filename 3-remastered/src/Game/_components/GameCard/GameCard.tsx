@@ -14,6 +14,8 @@ const GameCard: React.FC<GameCardProps> = ({
   imageUrl,
   onClick,
 }) => {
+  console.log('Game Card Rendered')
+
   const handleCardClick = () => {
     onClick && onClick()
   }
@@ -26,7 +28,7 @@ const GameCard: React.FC<GameCardProps> = ({
     >
       <GameCardInner isSolved={isSolved} isFlipped={isFlipped}>
         <GameCardFront />
-        <GameCardImage imageUrl={imageUrl} />
+        <GameCardImage isSolved={isSolved} imageUrl={imageUrl} />
       </GameCardInner>
     </GameCardWrapper>
   )
@@ -40,8 +42,9 @@ const GameCardWrapper = styled.div<Partial<GameCardProps>>`
   padding-bottom: 100%;
   box-sizing: border-box;
   perspective: 500px;
+  transition: opacity 0.8s ease;
 
-  ${(props) => props.isSolved && 'opacity: 0.8'};
+  ${(props) => props.isSolved && 'opacity: 0.5'};
 `
 
 const GameCardInner = styled.div<Partial<GameCardProps>>`
@@ -54,9 +57,10 @@ const GameCardInner = styled.div<Partial<GameCardProps>>`
   border-width: 3px;
   border-style: solid;
   border-color: ${(props) => (props.isSolved ? '#4ade80' : '#f1f5f9')};
+  background: '#fff';
   text-align: center;
   transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: transform 0.8s ease, border-color 0.8s ease, opacity 0.8s ease;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: ${(props) => (props.isFlipped ? 'rotateY(180deg);' : 'none')};
 `
@@ -79,6 +83,7 @@ const GameCardImage = styled.div<Partial<GameCardProps>>`
   background-image: url(${(props) => props.imageUrl});
   backface-visibility: hidden;
   transform: rotateY(180deg);
+  transition: all 0.8s ease;
 `
 
 export default GameCard
