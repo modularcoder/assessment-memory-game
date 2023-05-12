@@ -5,7 +5,7 @@ import { useGame } from './_hooks/useGame'
 import Game from './Game'
 
 export default function GameContainer() {
-  const [gridSize, setGridSize] = useState(2)
+  const [gridSize, setGridSize] = useState(4)
   const { cardsData, isLoading, error, fetchData } = useGameCardsData(gridSize)
   const { cards, toggleCard, gameStatus, movesCount } = useGame(cardsData)
 
