@@ -8,12 +8,16 @@ import GameBoard from './_components/GameBoard/GameBoard'
 export type GameProps = {
   cards: GameCardItem[]
   gridSize: number
+  isLoading: boolean
+  error?: any
   onReload: () => void
   onChangeGridSize: (gridSize: number) => void
   onCardClick: (card: GameCardItem) => void
 }
 
 const Game: React.FC<GameProps> = ({
+  isLoading,
+  error,
   cards,
   gridSize,
   onReload,
@@ -25,7 +29,18 @@ const Game: React.FC<GameProps> = ({
 
   return (
     <GameWrapper>
-      <GameNavbar onReloadClick={() => onReload()} />
+      <GameNavbar isLoading={isLoading} onReloadClick={() => onReload()} />
+      {isLoading && (
+        <GameLoading>
+          <h3>Game is loading, please wait...</h3>
+        </GameLoading>
+      )}
+      {error && (
+        <GameError>
+          <h3>Could not load the game :(</h3>
+          <h4>Don't panic, press reload</h4>
+        </GameError>
+      )}
       <GameBoard
         cards={cards}
         gridSize={gridSize}
@@ -40,6 +55,16 @@ const GameWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`
+
+const GameLoading = styled.div`
+  padding: 50px;
+  text-align: center;
+`
+
+const GameError = styled.div`
+  padding: 50px;
+  text-align: center;
 `
 
 export default Game

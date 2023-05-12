@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export default styled.button`
+type Props = {
+  disabled?: boolean
+}
+
+export default styled.button<Props>`
   background-color: #ea4c89;
   border-radius: 8px;
   border-style: none;
@@ -25,6 +29,13 @@ export default styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   transition: all 0.2s ease;
+
+  ${(props) =>
+    props.disabled &&
+    `
+    pointer-events: none;
+    opacity: 0.7;
+  `}
 
   &:hover {
     background-color: #f082ac;

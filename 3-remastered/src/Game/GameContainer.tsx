@@ -25,6 +25,8 @@ export default function GameContainer() {
     <Game
       cards={cards}
       gridSize={gridSize}
+      error={error}
+      isLoading={isLoading}
       onReload={handleReload}
       onChangeGridSize={handleChangeGridSize}
       onCardClick={handleCardClick}

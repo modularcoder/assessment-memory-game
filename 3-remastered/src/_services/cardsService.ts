@@ -46,7 +46,10 @@ const fetch = async (url: string, payload: number): Promise<Response> => {
       new Blob([JSON.stringify(body)], { type: 'application/json' }),
       init
     )
-    resolve(myResponse)
+
+    setTimeout(() => {
+      resolve(myResponse)
+    }, 500)
   })
 }
 

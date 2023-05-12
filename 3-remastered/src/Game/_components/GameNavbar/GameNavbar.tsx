@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import BaseButton from '../../../_components/BaseButton/BaseButton'
 
 type Props = {
+  isLoading: boolean
   onReloadClick: () => void
 }
 
@@ -10,7 +11,9 @@ const GameNavbar: React.FC<Props> = (props: Props) => {
   return (
     <GameNavbarWrapper>
       <GameNavbarTitle>MemoGame</GameNavbarTitle>
-      <BaseButton onClick={props.onReloadClick}>Reload Game</BaseButton>
+      <BaseButton disabled={props.isLoading} onClick={props.onReloadClick}>
+        Reload Game
+      </BaseButton>
     </GameNavbarWrapper>
   )
 }

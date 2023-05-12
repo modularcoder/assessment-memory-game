@@ -8,6 +8,8 @@ function useGameCardsData(gridSize: number) {
 
   const fetchData = async () => {
     setIsLoading(true)
+    setError(null)
+    setCardsData([])
 
     try {
       const cardsRequestData = await cardsService.get(gridSize)
