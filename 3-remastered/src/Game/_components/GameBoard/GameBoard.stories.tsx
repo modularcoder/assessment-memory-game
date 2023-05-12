@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Meta, StoryObj } from '@storybook/react'
-import cardsService, { generateCards } from '../../../_services/cardsService'
-import { type GameCardItem } from '../../../_types'
-import { useGameCards } from '../../_hooks/useGameCards'
+import { generateCards } from '../../../_services/cardsService'
 
 import GameBoard from './GameBoard'
 
@@ -39,7 +37,7 @@ const Container = styled.div`
 const TemplateDefault = () => {
   return (
     <Container>
-      <GameBoard cards={cardItems} gridSize={4} />
+      <GameBoard gameStatus={'started'} cards={cardItems} gridSize={4} />
     </Container>
   )
 }

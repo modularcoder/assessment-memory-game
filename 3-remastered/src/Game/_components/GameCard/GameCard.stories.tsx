@@ -31,6 +31,7 @@ const TemplateDefault = () => {
   return (
     <Container>
       <GameCard
+        isClickable={true}
         isFlipped={isFlipped}
         imageUrl={DEFAULT_IMAGE_URL}
         onClick={handleOnClick}
@@ -43,10 +44,26 @@ export const Default: Story = {
   render: () => <TemplateDefault />,
 }
 
+export const NotClickable: Story = {
+  render: () => (
+    <Container>
+      <GameCard
+        imageUrl={DEFAULT_IMAGE_URL}
+        isFlipped={false}
+        isClickable={false}
+      />
+    </Container>
+  ),
+}
+
 export const NotFlipped: Story = {
   render: () => (
     <Container>
-      <GameCard imageUrl={DEFAULT_IMAGE_URL} isFlipped={false} />
+      <GameCard
+        imageUrl={DEFAULT_IMAGE_URL}
+        isFlipped={false}
+        isClickable={true}
+      />
     </Container>
   ),
 }
@@ -54,7 +71,11 @@ export const NotFlipped: Story = {
 export const Flipped: Story = {
   render: () => (
     <Container>
-      <GameCard imageUrl={DEFAULT_IMAGE_URL} isFlipped={true} />
+      <GameCard
+        imageUrl={DEFAULT_IMAGE_URL}
+        isFlipped={true}
+        isClickable={true}
+      />
     </Container>
   ),
 }
@@ -62,7 +83,12 @@ export const Flipped: Story = {
 export const Solved: Story = {
   render: () => (
     <Container>
-      <GameCard imageUrl={DEFAULT_IMAGE_URL} isSolved={true} isFlipped={true} />
+      <GameCard
+        imageUrl={DEFAULT_IMAGE_URL}
+        isSolved={true}
+        isFlipped={true}
+        isClickable={false}
+      />
     </Container>
   ),
 }

@@ -1,19 +1,23 @@
 import React, { useState } from 'react'
 import { GameCardItem } from '../_types'
 import { useGameCardsData } from './_hooks/useGameCardsData'
-import { useGameCards } from './_hooks/useGameCards'
+import { useGame } from './_hooks/useGame'
 import Game from './Game'
 
 export default function GameContainer() {
-  const [gridSize, setGridSize] = useState(4)
+  const [gridSize, setGridSize] = useState(2)
   const { cardsData, isLoading, error, fetchData } = useGameCardsData(gridSize)
-  const { cards, toggleCard } = useGameCards(cardsData)
+  const { cards, toggleCard, gameStatus, movesCount } = useGame(cardsData)
 
   const handleReload = () => {
     fetchData()
   }
 
   const handleCardClick = (card: GameCardItem) => {
+    if (gameStatus !== 'started') {
+      return false
+    }
+
     toggleCard(card)
   }
 
@@ -26,6 +30,8 @@ export default function GameContainer() {
       cards={cards}
       gridSize={gridSize}
       error={error}
+      gameStatus={gameStatus}
+      movesCount={movesCount}
       isLoading={isLoading}
       onReload={handleReload}
       onChangeGridSize={handleChangeGridSize}

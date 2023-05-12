@@ -1,15 +1,24 @@
 import { useState, useEffect } from 'react'
-import { GameCardItem } from '../../_types'
+import { GameCardItem, GameStatus } from '../../_types'
 
-function useGameCards(cardsData: number[]) {
-  const [isGameStarted, setIsGameStarted] = useState(false)
+function useGame(cardsData: number[]) {
   const [cards, setCards] = useState<GameCardItem[]>([])
+  const [movesCount, setMovesCount] = useState(0)
+  const [gameStatus, setGameStatus] = useState<GameStatus>('starting')
 
   const cardsActive = cards.filter((card) => card.isActive)
   const cardsSolved = cards.filter((card) => card.isSolved)
 
   useEffect(() => {
-    setIsGameStarted(false)
+    if (cards.length > 0 && cardsSolved.length === cards.length) {
+      setGameStatus('ended')
+    }
+  }, [cards, cardsSolved])
+
+  useEffect(() => {
+    setGameStatus('starting')
+
+    setMovesCount(0)
 
     const cardItems = cardsData.map((imageId, index) => {
       return {
@@ -25,7 +34,7 @@ function useGameCards(cardsData: number[]) {
     setCards(cardItems)
 
     let timeout = setTimeout(() => {
-      setIsGameStarted(true)
+      setGameStatus('started')
 
       setCards(
         cardItems.map((cardItem) => {
@@ -45,6 +54,9 @@ function useGameCards(cardsData: number[]) {
     if (card.isSolved) {
       return false
     }
+
+    // Increase the number of moves
+    setMovesCount(movesCount + 1)
 
     // Intention to activate the card
     // if there are more than two active cards, deactivate them
@@ -102,8 +114,9 @@ function useGameCards(cardsData: number[]) {
     cards,
     cardsSolved,
     toggleCard,
-    isGameStarted,
+    gameStatus,
+    movesCount,
   }
 }
 
-export { useGameCards }
+export { useGame }

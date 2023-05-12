@@ -3,27 +3,28 @@ import styled from 'styled-components'
 
 export type GameCardProps = {
   imageUrl: string
+  isClickable: boolean
   isFlipped?: boolean
   isSolved?: boolean
   onClick?: () => void
 }
 
 const GameCard: React.FC<GameCardProps> = ({
+  isClickable,
   isSolved,
   isFlipped,
   imageUrl,
   onClick,
 }) => {
-  console.log('Game Card Rendered')
-
   const handleCardClick = () => {
-    onClick && onClick()
+    isClickable && onClick && onClick()
   }
 
   return (
     <GameCardWrapper
       isSolved={isSolved}
       isFlipped={isFlipped}
+      isClickable={isClickable}
       onClick={handleCardClick}
     >
       <GameCardInner isSolved={isSolved} isFlipped={isFlipped}>
@@ -37,14 +38,14 @@ const GameCard: React.FC<GameCardProps> = ({
 //
 const GameCardWrapper = styled.div<Partial<GameCardProps>>`
   position: relative;
-  cursor: pointer;
   width: 100%;
   padding-bottom: 100%;
   box-sizing: border-box;
   perspective: 500px;
   transition: opacity 0.8s ease;
 
-  ${(props) => props.isSolved && 'opacity: 0.5'};
+  ${(props) => props.isClickable && 'cursor: pointer;'}
+  ${(props) => props.isSolved && 'opacity: 0.5;'};
 `
 
 const GameCardInner = styled.div<Partial<GameCardProps>>`

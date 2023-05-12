@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { GameCardItem } from '../../../_types'
+import { GameCardItem, GameStatus } from '../../../_types'
 import GameCard from '../GameCard/GameCard'
 
 export type GameBoardProps = {
   cards: GameCardItem[]
+  gameStatus: GameStatus
   gridSize: number
   onCardClick?: (card: GameCardItem) => void
 }
 
 const GameBoard: React.FC<GameBoardProps> = ({
   cards,
+  gameStatus,
   gridSize,
   onCardClick,
 }) => {
@@ -24,6 +26,7 @@ const GameBoard: React.FC<GameBoardProps> = ({
         <GameCard
           imageUrl={card.imageUrl}
           key={index}
+          isClickable={gameStatus === 'started' && !card.isSolved}
           isFlipped={card.isActive || card.isSolved}
           isSolved={card.isSolved}
           onClick={() => handleGameCardClick(card)}

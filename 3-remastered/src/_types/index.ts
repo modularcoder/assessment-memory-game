@@ -5,3 +5,5 @@ export type GameCardItem = {
   isSolved: boolean
   isActive: boolean
 }
+
+export type GameStatus = 'starting' | 'started' | 'ended'

@@ -38,7 +38,7 @@ const fetch = async (url: string, payload: number): Promise<Response> => {
   }
 
   return new Promise((resolve) => {
-    const ok = Boolean(Math.round(Math.random()))
+    const ok = Boolean(Math.round(Math.random()) + 0.3)
     const init = { status: ok ? 200 : 500 }
     const body = ok ? generateCards(payload) : undefined
 
