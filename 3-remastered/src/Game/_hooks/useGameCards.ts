@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
-import { GameCard } from '../../_types'
+import { GameCardItem } from '../../_types'
 
 function useGameCards(cardsData: number[]) {
-  const [cards, setCards] = useState<GameCard[]>([])
+  const [cards, setCards] = useState<GameCardItem[]>([])
 
   const cardsActive = cards.filter((card) => card.isActive)
   const cardsSolved = cards.filter((card) => card.isSolved)
@@ -14,6 +14,7 @@ function useGameCards(cardsData: number[]) {
         return {
           index,
           imageId,
+          imageUrl: `https://picsum.photos/id/${imageId}/600`,
           isSolved: false,
           isActive: false,
         }
@@ -21,7 +22,7 @@ function useGameCards(cardsData: number[]) {
     )
   }, [cardsData])
 
-  const toggleCard = (card: GameCard) => {
+  const toggleCard = (card: GameCardItem) => {
     // This card is solved, do nothing
     if (card.isSolved) {
       return false

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { GameCard } from '../_types'
+import { GameCardItem } from '../_types'
 import { useGameCardsData } from './_hooks/useGameCardsData'
 import { useGameCards } from './_hooks/useGameCards'
 import Game from './Game'
@@ -13,7 +13,7 @@ export default function GameContainer() {
     fetchData()
   }
 
-  const handleCardClick = (card: GameCard) => {
+  const handleCardClick = (card: GameCardItem) => {
     toggleCard(card)
   }
 

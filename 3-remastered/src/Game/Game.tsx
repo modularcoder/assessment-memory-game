@@ -1,12 +1,12 @@
 import React from 'react'
-import { GameCard } from '../_types'
+import { GameCardItem } from '../_types'
 
 export type GameProps = {
-  cards: GameCard[]
+  cards: GameCardItem[]
   gridSize: number
   onReload: () => void
   onChangeGridSize: (gridSize: number) => void
-  onCardClick: (card: GameCard) => void
+  onCardClick: (card: GameCardItem) => void
 }
 
 const Game: React.FC<GameProps> = ({ cards, onCardClick }) => {
