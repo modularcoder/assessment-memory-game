@@ -40,6 +40,8 @@ const GameCardWrapper = styled.div<Partial<GameCardProps>>`
   padding-bottom: 100%;
   box-sizing: border-box;
   perspective: 500px;
+
+  ${(props) => props.isSolved && 'opacity: 0.8'};
 `
 
 const GameCardInner = styled.div<Partial<GameCardProps>>`

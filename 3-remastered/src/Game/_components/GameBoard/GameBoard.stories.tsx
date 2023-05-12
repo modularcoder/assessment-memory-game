@@ -3,16 +3,21 @@ import styled from 'styled-components'
 import { Meta, StoryObj } from '@storybook/react'
 import cardsService, { generateCards } from '../../../_services/cardsService'
 import { type GameCardItem } from '../../../_types'
+import { useGameCards } from '../../_hooks/useGameCards'
 
 import GameBoard from './GameBoard'
 
-const cardsInitial: GameCardItem[] = generateCards(4).map((imageId, index) => ({
-  index,
-  imageId,
-  imageUrl: `https://picsum.photos/id/${imageId}/600`,
-  isSolved: Boolean(Math.round(Math.random())),
-  isActive: false,
-}))
+const cardsIdsInitial = generateCards(4)
+
+const cardItems = cardsIdsInitial.map((imageId, index) => {
+  return {
+    index,
+    imageId,
+    imageUrl: `https://picsum.photos/id/${imageId}/600`,
+    isSolved: false,
+    isActive: true,
+  }
+})
 
 const meta: Meta<typeof GameBoard> = {
   title: 'Game/GameBoard',
@@ -32,21 +37,9 @@ const Container = styled.div`
 `
 
 const TemplateDefault = () => {
-  const [cards, setCards] = useState(cardsInitial)
-
-  const handleCardClick = (clickedCard: GameCardItem) => {
-    setCards(
-      cards.map((card) => {
-        return {
-          ...card,
-        }
-      })
-    )
-  }
-
   return (
     <Container>
-      <GameBoard cards={cards} gridSize={4} onCardClick={handleCardClick} />
+      <GameBoard cards={cardItems} gridSize={4} />
     </Container>
   )
 }

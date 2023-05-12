@@ -2,24 +2,42 @@ import { useState, useEffect } from 'react'
 import { GameCardItem } from '../../_types'
 
 function useGameCards(cardsData: number[]) {
+  const [isGameStarted, setIsGameStarted] = useState(false)
   const [cards, setCards] = useState<GameCardItem[]>([])
 
   const cardsActive = cards.filter((card) => card.isActive)
   const cardsSolved = cards.filter((card) => card.isSolved)
 
   useEffect(() => {
-    // Cards data
-    setCards(
-      cardsData.map((imageId, index) => {
-        return {
-          index,
-          imageId,
-          imageUrl: `https://picsum.photos/id/${imageId}/600`,
-          isSolved: false,
-          isActive: false,
-        }
-      })
-    )
+    setIsGameStarted(false)
+
+    const cardItems = cardsData.map((imageId, index) => {
+      return {
+        index,
+        imageId,
+        imageUrl: `https://picsum.photos/id/${imageId}/600`,
+        isSolved: false,
+        isActive: true,
+      }
+    })
+
+    // Show cards for 5 seconds
+    setCards(cardItems)
+
+    let timeout = setTimeout(() => {
+      setIsGameStarted(true)
+
+      setCards(
+        cardItems.map((cardItem) => {
+          return {
+            ...cardItem,
+            isActive: false,
+          }
+        })
+      )
+    }, 5000)
+
+    return () => clearTimeout(timeout)
   }, [cardsData])
 
   const toggleCard = (card: GameCardItem) => {
@@ -84,6 +102,7 @@ function useGameCards(cardsData: number[]) {
     cards,
     cardsSolved,
     toggleCard,
+    isGameStarted,
   }
 }
 
