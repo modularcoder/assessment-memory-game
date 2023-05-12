@@ -11,11 +11,11 @@ function App() {
 }
 
 const AppLayout = styled.div`
-  padding: 20px 0;
+  padding-bottom: 20px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 `
 
 export default App

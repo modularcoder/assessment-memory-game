@@ -34,7 +34,8 @@ const GameBoard: React.FC<GameBoardProps> = ({
 }
 
 const GameBoardWrapper = styled.div<Partial<GameBoardProps>>`
-  min-width: 600px;
+  width: 100%;
+  max-width: 560px;
   display: grid;
   gap: 2%;
   grid-template-columns: repeat(${(props) => props.gridSize}, 1fr);

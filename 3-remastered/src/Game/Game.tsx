@@ -1,6 +1,8 @@
 import React from 'react'
+import styled from 'styled-components'
 import { GameCardItem } from '../_types'
 
+import GameNavbar from './_components/GameNavbar/GameNavbar'
 import GameBoard from './_components/GameBoard/GameBoard'
 
 export type GameProps = {
@@ -11,18 +13,33 @@ export type GameProps = {
   onCardClick: (card: GameCardItem) => void
 }
 
-const Game: React.FC<GameProps> = ({ cards, gridSize, onCardClick }) => {
+const Game: React.FC<GameProps> = ({
+  cards,
+  gridSize,
+  onReload,
+  onCardClick,
+}) => {
   const handleCardClick = (card: GameCardItem) => {
     onCardClick(card)
   }
 
   return (
-    <GameBoard
-      cards={cards}
-      gridSize={gridSize}
-      onCardClick={handleCardClick}
-    />
+    <GameWrapper>
+      <GameNavbar onReloadClick={() => onReload()} />
+      <GameBoard
+        cards={cards}
+        gridSize={gridSize}
+        onCardClick={handleCardClick}
+      />
+    </GameWrapper>
   )
 }
+
+const GameWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
 
 export default Game
