@@ -64,3 +64,26 @@ In this step I've implemented the following
 
 
 ## Implementation Remastered
+
+
+- Better UI
+- Better directory structure (I'm using Modular Code organization conventions https://github.com/modularcode/modular-styleguide )
+- Better components organization (smart component, visual components). Game logic is encapsulated in the `useGame` hook, which is used in the `GameContainer.tsx` smart component. The `Game.tsx` component is purely visual component, and we may describe it in storybook.
+- Component driven development via storybook
+- Added game controls
+- Components are displayed in the grid
+- Cards don't have fixed width height and are adjustable to parent grid
+- Better animations
+- Counting number of moves
+- Feature to reload the game if there was an error
+- Game statuses: 'starting' | 'started' | 'ended'
+- Confetti animation when the game is finished, so user may restart the game
+
+
+Further needed improvements:
+
+- Add interaction tests to storybook
+- Possible E2E tests with Cypress
+- The game logic useGame should be covered by tests
+- Might be goot to introduce state management library like Redux + Redux-Toolkit, Zoostand or React Contexts, but aim to keep the visual/smart component pattern
+- Optimize cards list rerendering (memo + useCallback)
