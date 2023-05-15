@@ -20,11 +20,13 @@ const GameNavbar: React.FC<Props> = ({
   return (
     <GameNavbarWrapper>
       <GameNavbarTitle>MemoGame</GameNavbarTitle>
-      <GameNavbarMessage>
-        {gameStatus === 'starting' && 'Cards are closing in 5 seconds!'}
-        {gameStatus === 'started' && `${movesCount} moves made`}
-        {gameStatus === 'ended' && `Yuhooo, you won!`}
-      </GameNavbarMessage>
+      {!isLoading && (
+        <GameNavbarMessage>
+          {gameStatus === 'starting' && 'Cards are closing in 5 seconds!'}
+          {gameStatus === 'started' && `${movesCount} moves made`}
+          {gameStatus === 'ended' && `Yuhooo, you won!`}
+        </GameNavbarMessage>
+      )}
       <BaseButton disabled={isLoading} onClick={onReloadClick}>
         Reload Game
       </BaseButton>

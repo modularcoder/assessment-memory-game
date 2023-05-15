@@ -31,7 +31,7 @@ type Story = StoryObj<typeof GameBoard>
 const DEFAULT_IMAGE_URL = 'https://picsum.photos/id/200/600'
 
 const Container = styled.div`
-  width: 70%;
+  width: 600px;
 `
 
 const TemplateDefault = () => {
